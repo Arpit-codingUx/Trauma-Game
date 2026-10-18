@@ -584,123 +584,151 @@ h1{
     transform:
         scale(0.92);
 }
-#arpit .head {
-    width: 48px;
-    height: 46px;
-
-    left: 6px;
-
-    background: #f2b98f;
-
-    border: 2px solid #3b2924;
-
-    border-radius: 48% 48% 52% 52%;
-
-    box-shadow:
-        inset 3px 2px rgba(255,255,255,0.18),
-        0 2px 3px rgba(0,0,0,0.12);
+#arpit {
+    width: 68px !important;
+    height: 100px !important;
 }
 
 
-/* Fluffy hairstyle */
-#arpit .hair {
-    width: 47px;
-    height: 19px;
+/* ===================== */
+/* HEAD */
+/* ===================== */
 
-    left: -1px;
-    top: -3px;
+#arpit .head {
+    width: 54px !important;
+    height: 52px !important;
 
-    background: #2b211f;
+    left: 7px !important;
+    top: 0 !important;
+
+    background: #efb98f !important;
+
+    border: 2px solid #332522 !important;
 
     border-radius:
-        55% 55% 35% 35%;
+        46% 46% 50% 50% !important;
+
+    box-shadow:
+        inset 3px 2px rgba(255,255,255,0.22),
+        0 2px 4px rgba(0,0,0,0.15) !important;
+
+    z-index: 10 !important;
 }
 
 
-/* Little fluffy hair strands */
+/* ===================== */
+/* HAIR */
+/* ===================== */
+
+#arpit .hair {
+    width: 55px !important;
+    height: 22px !important;
+
+    left: -2px !important;
+    top: -4px !important;
+
+    background: #29211f !important;
+
+    border-radius:
+        55% 55% 30% 35% !important;
+
+    transform: rotate(-2deg);
+}
+
+
+/* LEFT HAIR TUFT */
 
 #arpit .hair::before {
     content: "";
 
     position: absolute;
 
-    width: 15px;
-    height: 12px;
+    width: 25px;
+    height: 18px;
 
-    left: 5px;
-    top: 8px;
+    left: 3px;
+    top: 9px;
 
-    background: #2b211f;
+    background: #29211f;
 
-    border-radius: 50%;
+    border-radius:
+        60% 20% 60% 30%;
 
-    transform: rotate(25deg);
+    transform: rotate(-12deg);
 }
 
+
+/* RIGHT HAIR TUFT */
 
 #arpit .hair::after {
     content: "";
 
     position: absolute;
 
-    width: 16px;
-    height: 12px;
+    width: 24px;
+    height: 17px;
 
-    right: 5px;
-    top: 8px;
+    right: 2px;
+    top: 9px;
 
-    background: #2b211f;
+    background: #29211f;
 
-    border-radius: 50%;
+    border-radius:
+        20% 60% 30% 60%;
 
-    transform: rotate(-25deg);
+    transform: rotate(12deg);
 }
 
 
-/* Bigger cute eyes */
+/* ===================== */
+/* EYES */
+/* ===================== */
 
 #arpit .eye {
-    width: 7px;
-    height: 8px;
+    width: 8px !important;
+    height: 10px !important;
 
-    top: 21px;
+    top: 24px !important;
 
-    background: #29201e;
+    background: #28201e !important;
 
-    border-radius: 50%;
+    border: none !important;
+
+    border-radius: 50% !important;
 
     box-shadow:
-        inset 2px 2px white;
+        inset 2px 2px 0 white !important;
 }
 
 
 #arpit .left-eye {
-    left: 10px;
+    left: 11px !important;
 }
 
 
 #arpit .right-eye {
-    right: 10px;
+    right: 11px !important;
+}
+#arpit .eye::before {
+    content: "";
+
+    position: absolute;
+
+    width: 10px;
+    height: 2px;
+
+    background: #49342d;
+
+    top: -6px;
+    left: -1px;
+
+    border-radius: 5px;
 }
 
 
-/* Cute little smile */
-
-#arpit .mouth {
-    width: 12px;
-    height: 6px;
-
-    left: 16px;
-    top: 32px;
-
-    border-bottom:
-        2px solid #6b3434;
-
-    border-radius: 50%;
-}
-
-
-/* Pink cheeks using head pseudo elements */
+/* ===================== */
+/* CHEEKS */
+/* ===================== */
 
 #arpit .head::before,
 #arpit .head::after {
@@ -709,12 +737,13 @@ h1{
 
     position: absolute;
 
-    width: 8px;
-    height: 4px;
+    width: 10px;
+    height: 5px;
 
-    top: 30px;
+    top: 36px;
 
-    background: rgba(255, 105, 135, 0.55);
+    background:
+        rgba(226, 109, 113, 0.32);
 
     border-radius: 50%;
 }
@@ -730,119 +759,353 @@ h1{
 }
 
 
-/* Cute oversized shirt */
+/* ===================== */
+/* SMALL SMILE */
+/* ===================== */
+
+#arpit .mouth {
+
+    width: 13px !important;
+    height: 7px !important;
+
+    left: 19px !important;
+    top: 38px !important;
+
+    border: none !important;
+
+    border-bottom:
+        2px solid #74463e !important;
+
+    border-radius:
+        0 0 50% 50% !important;
+}
+
+
+/* ===================== */
+/* HOODIE BODY */
+/* ===================== */
 
 #arpit .body {
 
-    width: 42px;
-    height: 38px;
+    width: 46px !important;
+    height: 40px !important;
 
-    left: 9px;
-    top: 42px;
+    left: 11px !important;
+    top: 48px !important;
 
     background:
         linear-gradient(
-            #353535,
-            #191919
-        );
+            135deg,
+            #303640,
+            #171b21
+        ) !important;
+
+    border:
+        2px solid #121519 !important;
 
     border-radius:
-        11px 11px 6px 6px;
+        12px 12px 7px 7px !important;
 
-    font-size: 8px;
+    color: white !important;
 
-    letter-spacing: 0.5px;
+    font-size: 8px !important;
+    font-weight: bold !important;
+
+    letter-spacing: 1px;
+
+    z-index: 5 !important;
 
     box-shadow:
-        inset 0 2px rgba(255,255,255,0.12);
+        inset 0 3px
+        rgba(255,255,255,0.08) !important;
 }
 
 
-/* Smaller cute arms */
+/* Hoodie neck */
+
+#arpit .body::before {
+
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 8px;
+
+    left: 11px;
+    top: -3px;
+
+    border:
+        2px solid #4a515c;
+
+    border-radius: 50%;
+
+    background: #252a32;
+}
+
+
+/* Hoodie pocket */
+
+#arpit .body::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 20px;
+    height: 8px;
+
+    bottom: 4px;
+    left: 11px;
+
+    border-bottom:
+        1px solid #555d69;
+
+    border-radius: 50%;
+}
+
+
+/* ===================== */
+/* ARMS */
+/* ===================== */
 
 #arpit .arm {
 
-    width: 8px;
-    height: 27px;
+    width: 10px !important;
+    height: 32px !important;
 
-    top: 47px;
+    top: 52px !important;
 
-    background: #f2b98f;
+    background: #303640 !important;
 
-    border-radius: 10px;
+    border:
+        2px solid #171b21;
+
+    border-radius: 8px !important;
+
+    z-index: 3;
 }
 
 
-/* Little shoes */
+#arpit .left-arm {
+
+    left: 5px !important;
+
+    transform:
+        rotate(12deg);
+}
+
+
+#arpit .right-arm {
+
+    right: 5px !important;
+
+    transform:
+        rotate(-12deg);
+}
+
+
+/* ===================== */
+/* LEGS */
+/* ===================== */
 
 #arpit .leg {
 
-    height: 20px;
+    width: 13px !important;
+    height: 23px !important;
 
-    background: #4169a1;
+    top: 84px !important;
+
+    background:
+        #39485f !important;
 
     border-radius:
-        3px 3px 7px 7px;
+        3px 3px 6px 6px !important;
+
+    z-index: 2;
 }
+
+
+#arpit .left-leg {
+    left: 18px !important;
+}
+
+
+#arpit .right-leg {
+    right: 18px !important;
+}
+
+
+/* =============================== */
+/* SHOES - using leg pseudo element */
+/* =============================== */
+
+#arpit .leg::after {
+
+    content: "";
+
+    position: absolute;
+
+    width: 16px;
+    height: 7px;
+
+    bottom: -3px;
+
+    background: #17191d;
+
+    border-radius:
+        5px 6px 3px 3px;
+}
+
+
+#arpit .left-leg::after {
+    left: -4px;
+}
+
+
+#arpit .right-leg::after {
+    right: -4px;
+}
+
+
+/* ================================= */
+/* WHEN TUMBLER HITS - CRYING FACE 😭 */
+/* ================================= */
+
+#arpit.crying {
+
+    transform:
+        translateY(14px)
+        rotate(10deg)
+        scaleY(0.84) !important;
+
+    transform-origin:
+        bottom center;
+}
+
+
+/* Head drops */
+
+#arpit.crying .head {
+
+    transform:
+        translateY(6px)
+        rotate(8deg) !important;
+}
+
+
+/* Eyes close */
 
 #arpit.crying .eye {
 
-    width: 9px;
-    height: 5px;
+    width: 10px !important;
+    height: 5px !important;
 
-    background: transparent;
+    background:
+        transparent !important;
 
-    box-shadow: none;
-
-    border-radius: 50%;
+    box-shadow:
+        none !important;
 
     border-top:
-        2px solid #29201e;
+        2px solid #29211f !important;
 }
 
 
-#arpit.crying .left-eye {
-    transform: rotate(-8deg);
+/* Hide eyebrows while crying */
+
+#arpit.crying .eye::before {
+    display: none;
 }
 
 
-#arpit.crying .right-eye {
-    transform: rotate(8deg);
-}
-
-
-/* Cute sad mouth */
+/* Sad mouth */
 
 #arpit.crying .mouth {
 
-    width: 13px;
-    height: 7px;
+    width: 14px !important;
+    height: 8px !important;
 
-    left: 16px;
-    top: 34px;
+    left: 19px !important;
+    top: 41px !important;
 
-    border-bottom: none;
+    border-bottom:
+        none !important;
 
     border-top:
-        2px solid #6b3434;
+        2px solid #74463e !important;
 
-    border-radius: 50%;
+    border-radius:
+        50% !important;
 }
 
 
-/* Bigger cartoon tears */
+/* TEARS */
 
 #arpit.crying .tear {
 
-    display: block;
+    display: block !important;
 
-    width: 6px;
-    height: 12px;
+    width: 7px !important;
+    height: 14px !important;
 
-    background: #64b5f6;
+    top: 31px !important;
+
+    background:
+        #64b5f6 !important;
 
     border-radius:
-        50% 50% 60% 60%;
+        50% 50% 60% 60% !important;
 
-    z-index: 20;
+    z-index: 50 !important;
+
+    animation:
+        cuteTears 0.55s
+        infinite !important;
+}
+
+
+#arpit.crying .left-tear {
+    left: 12px !important;
+}
+
+
+#arpit.crying .right-tear {
+    right: 12px !important;
+}
+
+
+@keyframes cuteTears {
+
+    0% {
+        transform:
+            translateY(0)
+            scale(0.8);
+
+        opacity: 1;
+    }
+
+    100% {
+        transform:
+            translateY(18px)
+            scale(1.15);
+
+        opacity: 0;
+    }
+}
+
+
+/* Arms fall down when sad */
+
+#arpit.crying .left-arm {
+
+    transform:
+        rotate(38deg) !important;
+}
+
+
+#arpit.crying .right-arm {
+
+    transform:
+        rotate(-38deg) !important;
 }
