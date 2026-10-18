@@ -1,0 +1,461 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arpit vs Pink Tumblers</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>🩷 Arpit vs Pink Tumblers 🩷</h1>
+<div id="score">Score: 0</div>
+
+<div id="game">
+
+    <!-- ARPIT -->
+    <div id="arpit">
+
+        <div class="head">
+            <div class="hair"></div>
+
+            <div class="eye left-eye"></div>
+            <div class="eye right-eye"></div>
+
+            <div class="tear left-tear"></div>
+            <div class="tear right-tear"></div>
+
+            <div class="mouth"></div>
+        </div>
+
+        <div class="body">
+            ARPIT
+        </div>
+
+        <div class="arm left-arm"></div>
+        <div class="arm right-arm"></div>
+
+        <div class="leg left-leg"></div>
+        <div class="leg right-leg"></div>
+
+    </div>
+
+    <div id="message"></div>
+
+</div>
+
+
+<button id="restart" onclick="restartGame()">
+    PLAY AGAIN 😭
+</button>
+
+
+<div class="controls">
+
+    <button onclick="moveLeft()">⬅️</button>
+
+    <button onclick="moveRight()">➡️</button>
+
+</div>
+
+
+<script>
+
+const game = document.getElementById("game");
+const arpit = document.getElementById("arpit");
+const scoreText = document.getElementById("score");
+const message = document.getElementById("message");
+const restart = document.getElementById("restart");
+
+let arpitX = 150;
+let score = 0;
+let gameRunning = true;
+
+
+// =====================
+// FUNNY MESSAGES 😂
+// =====================
+
+const funnyMessages = [
+
+    "GRACY IS COMING 💀",
+
+    "ARPIT BHAAGGG 😭",
+
+    "GRACY NE TUMBLER FEK DIYA 💀",
+
+    "BHAI YE KYA KAR DIYA 😭",
+
+    "ARPIT KA GAME BAJ GAYA 😂",
+
+    "PINK TUMBLER WINS 🩷💀",
+
+    "GRACY KO MAT BATANA 😭",
+
+    "APNE TO LGG GYE 💀",
+
+    "NOT THE PINK TUMBLER AGAIN 😭",
+
+    "BRO JUST UNLOCKED A MEMORY 💀",
+
+    "YE TUMBLER KUCH ZYADA PERSONAL HO GYA 😭",
+
+    "ARPIT.exe HAS STOPPED WORKING 💀",
+
+    "EMOTIONAL DAMAGE 😭",
+
+    "CORE MEMORY UNLOCKED 💀",
+
+    "BHAI KO FLASHBACK AA GYA 😭"
+
+];
+
+
+// =====================
+// MOVE ARPIT
+// =====================
+
+function moveLeft(){
+
+    if(!gameRunning) return;
+
+    arpitX -= 30;
+
+    if(arpitX < 0){
+        arpitX = 0;
+    }
+
+    arpit.style.left = arpitX + "px";
+}
+
+
+function moveRight(){
+
+    if(!gameRunning) return;
+
+    arpitX += 30;
+
+    let limit =
+        game.clientWidth -
+        arpit.offsetWidth;
+
+    if(arpitX > limit){
+        arpitX = limit;
+    }
+
+    arpit.style.left = arpitX + "px";
+}
+
+
+// Keyboard controls
+
+document.addEventListener("keydown", function(e){
+
+    if(
+        e.key === "ArrowLeft" ||
+        e.key.toLowerCase() === "a"
+    ){
+        moveLeft();
+    }
+
+    if(
+        e.key === "ArrowRight" ||
+        e.key.toLowerCase() === "d"
+    ){
+        moveRight();
+    }
+
+});
+
+
+// =====================
+// BREAKING SOUND
+// =====================
+
+function breakSound(){
+
+    try{
+
+        const audio =
+            new (window.AudioContext ||
+            window.webkitAudioContext)();
+
+        for(let i = 0; i < 12; i++){
+
+            const oscillator =
+                audio.createOscillator();
+
+            const gain =
+                audio.createGain();
+
+            oscillator.type = "square";
+
+            oscillator.frequency.value =
+                500 + Math.random() * 2000;
+
+            gain.gain.setValueAtTime(
+                0.04,
+                audio.currentTime
+            );
+
+            gain.gain.exponentialRampToValueAtTime(
+                0.001,
+                audio.currentTime + 0.2
+            );
+
+            oscillator.connect(gain);
+            gain.connect(audio.destination);
+
+            oscillator.start();
+
+            oscillator.stop(
+                audio.currentTime + 0.2
+            );
+        }
+
+    }catch(error){
+
+        console.log("Sound unavailable");
+
+    }
+
+}
+
+
+// =====================
+// CREATE TUMBLER
+// =====================
+
+function createTumbler(){
+
+    if(!gameRunning) return;
+
+    const tumbler =
+        document.createElement("div");
+
+    tumbler.className = "tumbler";
+
+    let maxX =
+        game.clientWidth - 55;
+
+    let x =
+        Math.random() * maxX;
+
+    tumbler.style.left =
+        x + "px";
+
+    game.appendChild(tumbler);
+
+
+    let y = -110;
+
+    let speed =
+        3.5 + Math.random() * 2;
+
+
+    function fall(){
+
+        if(!gameRunning){
+
+            tumbler.remove();
+            return;
+
+        }
+
+        y += speed;
+
+        tumbler.style.top =
+            y + "px";
+
+
+        let bottle =
+            tumbler.getBoundingClientRect();
+
+        let player =
+            arpit.getBoundingClientRect();
+
+
+        // COLLISION
+
+        if(
+
+            bottle.left < player.right &&
+            bottle.right > player.left &&
+            bottle.top < player.bottom &&
+            bottle.bottom > player.top
+
+        ){
+
+            tumbler.remove();
+
+            gameOver();
+
+            return;
+        }
+
+
+        // DODGED
+
+        if(y > game.clientHeight){
+
+            tumbler.remove();
+
+            score++;
+
+            scoreText.innerHTML =
+                "Score: " + score;
+
+            return;
+        }
+
+
+        requestAnimationFrame(fall);
+
+    }
+
+
+    requestAnimationFrame(fall);
+
+}
+
+
+// =====================
+// GAME OVER
+// =====================
+
+function gameOver(){
+
+    if(!gameRunning) return;
+
+    gameRunning = false;
+
+    breakSound();
+
+
+    // Arpit bends and starts crying 😭
+
+    arpit.classList.add("crying");
+
+
+    // Remove remaining tumblers
+
+    document
+    .querySelectorAll(".tumbler")
+    .forEach(function(t){
+
+        t.remove();
+
+    });
+
+
+    // Pick one random funny message
+
+    const randomFunnyMessage =
+        funnyMessages[
+            Math.floor(
+                Math.random() *
+                funnyMessages.length
+            )
+        ];
+
+
+    // Show message after crying animation
+
+    setTimeout(function(){
+
+        message.innerHTML =
+
+        "NOSTALGIA HIT 😭" +
+
+        "<br>" +
+
+        "TRAUMA AGAIN 💀" +
+
+        "<br><br>" +
+
+        randomFunnyMessage +
+
+        "<br><br>" +
+
+        "Score: " + score;
+
+
+        message.style.display =
+            "block";
+
+
+        restart.style.display =
+            "block";
+
+    }, 700);
+
+}
+
+
+// =====================
+// RESTART
+// =====================
+
+function restartGame(){
+
+    document
+    .querySelectorAll(".tumbler")
+    .forEach(function(t){
+
+        t.remove();
+
+    });
+
+
+    score = 0;
+
+    scoreText.innerHTML =
+        "Score: 0";
+
+
+    arpitX = 150;
+
+    arpit.style.left =
+        arpitX + "px";
+
+
+    arpit.classList.remove(
+        "crying"
+    );
+
+
+    message.style.display =
+        "none";
+
+    restart.style.display =
+        "none";
+
+
+    gameRunning = true;
+
+}
+
+
+// =====================
+// SPAWN OBSTACLES
+// =====================
+
+setInterval(function(){
+
+    if(gameRunning){
+
+        createTumbler();
+
+    }
+
+}, 850);
+
+
+</script>
+
+</body>
+</html>
+```
